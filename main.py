@@ -21,17 +21,19 @@ truck_num1 = Truck(1)
 truck_num2 = Truck(2)
 truck_num3 = Truck(3)
 
-# use for loops to manually insert packages with the listed IDs into each truck's packages set.This approach
-# represents loading each truck with packages.
-# the insert_package_data() from the Truck class is used to insert packages into a truck's package set.
+# Define the package IDs for each truck
+truck_packages = {
+    truck_num1: [1, 13, 14, 15, 16, 19, 20, 29, 30, 31, 34, 37, 40],
+    truck_num2: [3, 9, 12, 17, 18, 21, 22, 23, 24, 26, 27, 35, 36, 38, 39],
+    truck_num3: [6, 2, 4, 5, 7, 8, 10, 11, 25, 28, 32, 33]
+}
+
+# Use a loop to insert packages into each truck
 # space complexity: O(1).
 # time complexity: O(n).
-for data_row in [1, 13, 14, 15, 16, 19, 20, 29, 30, 31, 34, 37, 40]:
-    truck_num1.insert_package_data(packages_hashtable.retrieve_item(data_row))
-for data_row in [3, 9, 12, 17, 18, 21, 22, 23, 24, 26, 27, 35, 36, 38, 39]:
-    truck_num2.insert_package_data(packages_hashtable.retrieve_item(data_row))
-for data_row in [6, 2, 4, 5, 7, 8, 10, 11, 25, 28, 32, 33]:
-    truck_num3.insert_package_data(packages_hashtable.retrieve_item(data_row))
+for truck, package_ids in truck_packages.items():
+    for data_row in package_ids:
+        truck.insert_package_data(packages_hashtable.retrieve_item(data_row))
 
 # these assignments set a truck's departure time and current time to specific times based on the packages.
 # truck 1 departs the earliest at 8 a.m. It'll help take into account particular package deadlines.
